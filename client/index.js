@@ -11,17 +11,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener("message", receiveMessage.bind(this), 'http://127.0.0.1:3050');
+    window.addEventListener("message", receiveMessage.bind(this));
     // console.log('my frames:', window.frames)
     const context = this;
     function receiveMessage(event) {
       console.log(event)
-      if (event.origin === "http://127.0.0.1:3050" && typeof event.data === 'string')
-        console.log(event.data);
-        console.log(context)
-        context.settingState([event.origin], event.data)
+      if (event.origin === "http://127.0.0.1:3050") {
+        context.setState({[event.origin] : JSON.parse(event.data)})
         return;
       }
+    }
   }
 
   settingState(key, value) {
