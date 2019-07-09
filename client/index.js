@@ -4,42 +4,27 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.changeID = this.changeID.bind(this);
+    this.broadcastID = this.broadcastID.bind(this);
     this.state = {
-        string: 'This is the App!',
-        message: ''
+      id: null
      };
   }
 
-  componentDidMount() {
-    window.addEventListener("message", receiveMessage.bind(this));
-    // console.log('my frames:', window.frames)
-    const context = this;
-    function receiveMessage(event) {
-      console.log(event)
-      if (event.origin === "http://127.0.0.1:3050") {
-        context.setState({[event.origin] : JSON.parse(event.data)})
-        return;
-      }
-    }
+  changeID(e) {
+    this.setState({id: e.target.value})
   }
 
-  settingState(key, value) {
-    this.setState({[key] : value})
+  broadcastID() {
+    window.dispatchEvent(new CustomEvent('product',{detail: {product_id: this.state.id}}))
   }
+
 
   render() {
-    const styleProDesc = {
-      border: 'none',
-      width: '1200px',
-      height: '300px'
-    }
-
     return (
       <div>
-        <p>{ this.state.string }</p>
-        <p>These are my props: { JSON.stringify(this.props) }</p>
-        <p>Message from my child iframe: { this.state.message }</p>
-        <iframe style={ styleProDesc } src="http://127.0.0.1:3050/"></iframe>
+        <input onChange={(e) =>{this.changeID(e)}} type="text" name="" id="IDinput"/>
+        <button onClick={() =>{this.broadcastID()}}>Submit</button>
       </div>
     );
   }
