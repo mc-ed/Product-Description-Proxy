@@ -1,0 +1,34 @@
+#searchContainer {
+    margin : 12px auto;
+}
+
+#overviewContainer {
+    margin : 48px auto;
+}
+
+#descriptionContainer {
+    margin : 48px auto;
+}
+
+#CarouselContainer {
+    margin : 48px auto;
+}
+
+#bottomOfPage .position-img-outer
+{
+    height: 820px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#bottomOfPage .position-img-outer .position-img-inner
+{
+    display: inline-block;
+    position: relative;
+    right: -50%;
+}
+#bottomOfPage .position-img-outer .position-img-inner .position-img
+{
+    position: relative;
+    left: -50%;
+   
+}

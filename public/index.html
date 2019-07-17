@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Global CSS-->
+    <link rel="stylesheet" href="./styles.css">
+
     <!-- Bootstrap CSS-->
     <link
       rel="stylesheet"
@@ -12,37 +15,10 @@
       crossorigin="anonymous"
     />
     <!-- Components -->
-    <!-- Search Bar Styles -->
-    <link
-      rel="stylesheet"
-      href="http://search-banner.us-east-1.elasticbeanstalk.com/style/style.css"
-    />
     <!-- Overview Styles -->
     <link
       rel="stylesheet"
       href="http://ec2-18-188-213-241.us-east-2.compute.amazonaws.com/assets/styles.css"
-    />
-    <!-- Description Styles -->
-    <!-- <link
-      rel="stylesheet"
-      href="http://ec2-18-225-6-113.us-east-2.compute.amazonaws.com/assests/main.css"
-    /> -->
-    <!-- Carousel Styles -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      charset="UTF-8"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      charset="UTF-8"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="http://fec-lowes-carousel.us-east-2.elasticbeanstalk.com/custom.css"
     />
     <title>Lowe's Mock</title>
   </head>
@@ -63,15 +39,13 @@
     <div id="CarouselContainer">
       <div id="app" class="container"></div>
     </div>
-
-    <!-- Search Script -->
-    <script src="http://search-banner.us-east-1.elasticbeanstalk.com/bundle.js"></script>
-    <!-- Overview Script -->
-    <script src="http://ec2-18-188-213-241.us-east-2.compute.amazonaws.com/bundle.js"></script>
-    <!-- Description Script -->
-    <script src="http://ec2-18-225-6-113.us-east-2.compute.amazonaws.com/bundle.js"></script>
-    <!-- Carousel Script -->
-    <script src="http://fec-lowes-carousel.us-east-2.elasticbeanstalk.com/main.js"></script>
+    <div id='bottomOfPage'>
+      <div class="position-img-outer">
+        <div class="position-img-inner">
+            <img src="https://lowesproject.s3.amazonaws.com/Bottom.png" class="position-img" alt="img" style=" height: 820px; " />
+        </div>
+    </div>
+    </div>
 
     <!-- Bootstrap Script -->
     <script
@@ -89,5 +63,15 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
+
+     <!-- Search Script -->
+     <script src="http://search-banner.us-east-1.elasticbeanstalk.com/bundle.js"></script>
+     <!-- Overview Script -->
+     <script src="http://ec2-18-188-213-241.us-east-2.compute.amazonaws.com/bundle.js"></script>
+     <!-- Description Script -->
+     <script src="http://ec2-18-225-6-113.us-east-2.compute.amazonaws.com/bundle.js"></script>
+     <!-- Carousel Script -->
+     <script src="http://fec-lowes-carousel.us-east-2.elasticbeanstalk.com/bundle.js"></script>
   </body>
 </html>
