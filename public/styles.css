@@ -3,15 +3,22 @@
 }
 
 #overviewContainer {
+    display: none;
     margin : 48px auto;
 }
 
 #descriptionContainer {
+    display: none;
     margin : 48px auto;
 }
 
-#CarouselContainer {
+#carouselContainer {
+    display: none;
     margin : 48px auto;
+}
+
+#bottomOfPage {
+    display: none;
 }
 
 #bottomOfPage .position-img-outer
@@ -30,5 +37,50 @@
 {
     position: relative;
     left: -50%;
-   
 }
+
+#hero {
+    margin: -12px;
+}
+
+#hero .position-img-outer
+{
+    height: 820px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#hero .position-img-outer .position-img-inner
+{
+    display: inline-block;
+    position: relative;
+    right: -50%;
+}
+#hero .position-img-outer .position-img-inner .position-img
+{
+    position: relative;
+    left: -50%;
+}
+
+.launchSearchBar{
+    position: absolute;
+    top: 250px;
+    z-index: 100;
+    width: 500px !important;
+    left: -400px;
+    height: 48px;
+}
+
+.launchDropDown {
+    /* posn: fixed; */
+    /* position: fixed !important; */
+    top: -10px !important;
+    width: 800px !important;
+}
+
+.launchDepartments {
+    left: 850px !important;
+}
+
+body.noScroll {
+    overflow: hidden;
+  }
