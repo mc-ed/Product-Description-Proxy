@@ -1,9 +1,16 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 #proxyContainer {
     transition: opacity 500ms linear;
 }
 
 #searchContainer {
-    margin : 12px auto;
+    position: initial;
+    height: 19vh;
 }
 
 #overviewContainer {
@@ -27,7 +34,7 @@
 
 #bottomOfPage .position-img-outer
 {
-    height: 820px;
+    height: 100vh;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -53,13 +60,22 @@
     transition: opacity 500ms linear;
 }
 
+.hideITfast {
+    opacity: 0;
+    transition: opacity 500ms linear;
+}
+
 .hideIT.removeIT {
+    display: none;
+}
+
+.removeIT {
     display: none;
 }
 
 #hero .position-img-outer
 {
-    height: 895px;
+    height: 95vh;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -77,10 +93,10 @@
 
 .launchSearchBar{
     position: absolute;
-    top: 250px;
+    top: 25vh;
     z-index: 10;
     width: 500px !important;
-    left: -400px;
+    left: -25vw;
     height: 48px;
 }
 
@@ -108,6 +124,7 @@ body.noScroll {
  
   
   .loader {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
     z-index:100;
     position: fixed;
     left: 0;
@@ -124,6 +141,7 @@ body.noScroll {
     top: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+    font-weight: bold;
     font-size: 10vmax;
     width: fit-content;
     display: flex;
@@ -131,16 +149,23 @@ body.noScroll {
   }
   
   .loaded-text {
+    font-weight: bold;
     transform: scale(2);
     animation: scaleText .5s linear .5s forwards;
   }
   
   .loadingText2 {
+    font-weight: bold;
     z-index: 1000;
-    width: 0px;
+    width: 0;
     overflow: hidden;
-    animation: expandIT .5s linear 1.5s forwards;
-    
+    animation: expandIT .5s linear 1.5s forwards; 
+  }
+
+  @media(max-width: 1000px) {
+      .loadingText2 {
+        animation: expandITMobile .5s linear 1.5s forwards;
+      }
   }
   
   @keyframes scaleText {
@@ -149,8 +174,13 @@ body.noScroll {
   }
   
   @keyframes expandIT {
+    from {width: 0;}
+    to {width: 32vmax;}
+  }
+
+  @keyframes expandITMobile {
     from {width: 0px;}
-    to {width: 450px;}
+    to {width: 325px;}
   }
   
   @keyframes backgroundChange {
