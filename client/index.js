@@ -23,6 +23,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    //debugging Event Listeners
+    window.addEventListener('product', (e)=> {console.log('prouduct: ', e.detail)})
+    window.addEventListener('favorite', (e)=> {console.log('favorite: ', e.detail)})
+    window.addEventListener('loggedIn', (e)=> {console.log('loggedIn: ', e.detail)})
+    window.addEventListener('loggedOut', (e)=> {console.log('loggedOut: ', e.detail)})
+    window.addEventListener('stars', (e)=> {console.log('stars: ', e.detail)})
+    window.addEventListener('cart', (e)=> {console.log('cart: ', e.detail)})
+
     window.addEventListener('product', (e) => {
       localStorage.setItem('lowesMockProject_selectedProduct', e.detail.product_id);
     })
@@ -58,14 +66,20 @@ class App extends React.Component {
           searchBar.classList.add('launchSearchBar')
           dropDown.classList.add('launchDropDown')
 
-          //if refershed, navigate back to product
+          //if refreshed, navigate back to product
           if (window.performance) {
             console.info("window.performance works fine on this browser");
             if (performance.navigation.type == 1) {
               let item = Number(localStorage.getItem('lowesMockProject_selectedProduct'));
               window.dispatchEvent(new CustomEvent('product',{detail: {product_id: item}}))
             } else {
-              console.info("No Refersh");
+              console.info("No Refresh");
+              if(window.location.pathname.length > 1) {
+                let path = Number(window.location.pathname.split('/')[1]);
+                if(path > 0 && path <= 100) {
+                  window.dispatchEvent(new CustomEvent('product',{detail: {product_id: path}}))
+                }   
+              }
             }
           }
         })
