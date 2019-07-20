@@ -1,24 +1,28 @@
+#proxyContainer {
+    transition: opacity 500ms linear;
+}
+
 #searchContainer {
     margin : 12px auto;
 }
 
 #overviewContainer {
-    display: none;
     margin : 48px auto;
+    transition: opacity 500ms linear;
 }
 
 #descriptionContainer {
-    display: none;
     margin : 48px auto;
+    transition: opacity 500ms linear;
 }
 
 #carouselContainer {
-    display: none;
     margin : 48px auto;
+    transition: opacity 500ms linear;
 }
 
 #bottomOfPage {
-    display: none;
+    transition: opacity 500ms linear;
 }
 
 #bottomOfPage .position-img-outer
@@ -41,11 +45,21 @@
 
 #hero {
     margin: -12px;
+    transition: opacity 500ms linear;
+}
+
+.hideIT {
+    opacity: 0;
+    transition: opacity 500ms linear;
+}
+
+.hideIT.removeIT {
+    display: none;
 }
 
 #hero .position-img-outer
 {
-    height: 820px;
+    height: 895px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -64,17 +78,19 @@
 .launchSearchBar{
     position: absolute;
     top: 250px;
-    z-index: 100;
+    z-index: 10;
     width: 500px !important;
     left: -400px;
     height: 48px;
 }
 
 .launchDropDown {
-    /* posn: fixed; */
-    /* position: fixed !important; */
     top: -10px !important;
     width: 800px !important;
+}
+
+.launchSearchBar > form > div.row {
+    border: #eee 2px solid;
 }
 
 .launchDepartments {
@@ -83,4 +99,74 @@
 
 body.noScroll {
     overflow: hidden;
+  }
+
+
+
+
+
+ 
+  
+  .loader {
+    z-index:100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #004990;
+    width: 100%;
+    height: 100vh;
+    animation: backgroundChange .5s linear 2s forwards, fadeOut .5s linear 3.5s forwards
+  }
+  
+  .load-text {
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 10vmax;
+    width: fit-content;
+    display: flex;
+    animation: colorChange .5s linear 2s forwards;
+  }
+  
+  .loaded-text {
+    transform: scale(2);
+    animation: scaleText .5s linear .5s forwards;
+  }
+  
+  .loadingText2 {
+    z-index: 1000;
+    width: 0px;
+    overflow: hidden;
+    animation: expandIT .5s linear 1.5s forwards;
+    
+  }
+  
+  @keyframes scaleText {
+    from {transform: scale(2)}
+    to {transform: scale(1)}
+  }
+  
+  @keyframes expandIT {
+    from {width: 0px;}
+    to {width: 450px;}
+  }
+  
+  @keyframes backgroundChange {
+    from {background-color: #004990}
+    to {background-color: white}
+  }
+  
+  @keyframes colorChange {
+    from {color: white}
+    to {color: #004990}
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1}
+    to {
+      opacity: 0; 
+      z-index: -1;
+    }
   }

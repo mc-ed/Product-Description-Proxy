@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "ProductDecription",
   "version": "",
   "description": "",
   "private": true,
@@ -19,7 +19,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-loading-overlay": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

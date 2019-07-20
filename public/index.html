@@ -23,7 +23,13 @@
     <title>Lowe's Mock</title>
   </head>
   <body>
-    
+      <div class="loader">
+          <div class="load-text">
+            <div class="loaded-text">L</div>
+            <div class="loadingText2">OWES</div>
+          </div>
+        </div>
+
     <!-- Search Container -->
     <div id="searchContainer">
       <div id="search-banner"></div>
@@ -31,27 +37,30 @@
     <!-- Proxy Container -->
     <div id="proxyContainer">
       <div id="appProxy"></div>
+
     </div>
     <script src="bundle.js"></script>
     <!-- Overview Container -->
-    <div id="overviewContainer">
+    <div id="overviewContainer" class='hideIT removeIT'>
       <div id="root" class="container"></div>
     </div>
     <!-- Description Container -->
-    <div id="descriptionContainer">
+    <div id="descriptionContainer" class='hideIT removeIT'>
       <div id="productDesc"></div>
     </div>
     <!-- Carousel Container -->
-    <div id="carouselContainer">
+    <div id="carouselContainer" class='hideIT removeIT'>
       <div id="app" class="container"></div>
     </div>
-    <div id='bottomOfPage'>
+    <div id='bottomOfPage' class='hideIT removeIT'>
       <div class="position-img-outer">
         <div class="position-img-inner">
             <img src="https://lowesproject.s3.amazonaws.com/Bottom.png" class="position-img" alt="img" style=" height: 850px; " />
         </div>
       </div>
     </div>
+
+
 
     <!-- Bootstrap Script -->
     <script
