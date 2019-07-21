@@ -28,7 +28,7 @@ class App extends React.Component {
 
     //Browswer Route listener
     window.onpopstate = (e) => {
-      console.log(e.state)
+      console.log('browser rouote state:', e.state)
       if(e.state && e.state.product_id) {
         window.dispatchEvent(new CustomEvent('product', {detail:{product_id: e.state.product_id, browser_route: true}}))
       } else {
@@ -51,10 +51,28 @@ class App extends React.Component {
     // Product change Event Listener
     window.addEventListener('product', (e) => {
       const id = Number(e.detail.product_id);
-      localStorage.setItem('lowesMockProject_selectedProduct', id);
-      if(!e.detail.browser_route) {
-        window.history.pushState({product_id: id}, 'Lowe\'s product detail for item: ' + id, '/' + id)
-      }
+        if(id < 1 || id > 100) {
+          window.history.pushState({product_id: 0}, 'Welcome to Lowe\'s', '/')
+          this.fadeProductPage();
+          setTimeout(() => {
+            this.toggleProductPage();
+            this.toggleScrollLock();
+            this.toggleSearchBarAdjustments();
+            setTimeout(() => {
+              this.toggleProxy();
+              window.requestAnimationFrame(()=> {
+                this.fadeLaunchPage();
+                this.setState({isFirstChoice: true})
+              })
+            }, 50);
+          }, 550);
+        } else {
+          localStorage.setItem('lowesMockProject_selectedProduct', id);
+          if(!e.detail.browser_route) {
+            window.history.pushState({product_id: id}, 'Lowe\'s product detail for item: ' + id, '/' + id)
+          }
+        }
+
     })
     // prevent body scrolling
     this.setState({body : document.body}, ()=> {
@@ -130,26 +148,17 @@ class App extends React.Component {
     }, cb)
   }
 
-  // setupLaunchPage() {
-  //   const { departmentMenu, searchBar, dropDown } = this.state.search;
-  //   departmentMenu.classList.add('launchDepartments')
-  //   searchBar.classList.add('launchSearchBar')
-  //   dropDown.classList.add('launchDropDown')
-  // }
-
-
   handlePageRefresh() {
     if (window.performance) {
-      console.info("window.performance works fine on this browser");
       if (performance.navigation.type == 1) {
         let item = Number(localStorage.getItem('lowesMockProject_selectedProduct'));
-        window.dispatchEvent(new CustomEvent('product',{detail: {product_id: item}}))
+        window.dispatchEvent(new CustomEvent('product',{detail: {product_id: item, browser_route: true}}))
       } else {
         console.info("No Refresh");
         if(window.location.pathname.length > 1) {
           let path = Number(window.location.pathname.split('/')[1]);
           if(path > 0 && path <= 100) {
-            window.dispatchEvent(new CustomEvent('product',{detail: {product_id: path}}))
+            window.dispatchEvent(new CustomEvent('product',{detail: {product_id: path, browser_route: true}}))
           }   
         }
       }
