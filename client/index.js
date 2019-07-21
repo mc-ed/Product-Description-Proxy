@@ -24,15 +24,37 @@ class App extends React.Component {
 
   componentDidMount() {
     //debugging Event Listeners
-    window.addEventListener('product', (e)=> {console.log('prouduct: ', e.detail)})
-    window.addEventListener('favorite', (e)=> {console.log('favorite: ', e.detail)})
-    window.addEventListener('loggedIn', (e)=> {console.log('loggedIn: ', e.detail)})
-    window.addEventListener('loggedOut', (e)=> {console.log('loggedOut: ', e.detail)})
-    window.addEventListener('stars', (e)=> {console.log('stars: ', e.detail)})
-    window.addEventListener('cart', (e)=> {console.log('cart: ', e.detail)})
+    this.debugEventListeners();
 
+    //Browswer Route listener
+    window.onpopstate = (e) => {
+      console.log(e.state)
+      if(e.state && e.state.product_id) {
+        window.dispatchEvent(new CustomEvent('product', {detail:{product_id: e.state.product_id, browser_route: true}}))
+      } else {
+        this.fadeProductPage();
+        setTimeout(() => {
+          this.toggleProductPage();
+          this.toggleScrollLock();
+          this.toggleSearchBarAdjustments();
+          setTimeout(() => {
+            this.toggleProxy();
+            window.requestAnimationFrame(()=> {
+              this.fadeLaunchPage();
+              this.setState({isFirstChoice: true})
+            })
+          }, 50);
+        }, 550);
+      }
+    }
+
+    // Product change Event Listener
     window.addEventListener('product', (e) => {
-      localStorage.setItem('lowesMockProject_selectedProduct', e.detail.product_id);
+      const id = Number(e.detail.product_id);
+      localStorage.setItem('lowesMockProject_selectedProduct', id);
+      if(!e.detail.browser_route) {
+        window.history.pushState({product_id: id}, 'Lowe\'s product detail for item: ' + id, '/' + id)
+      }
     })
     // prevent body scrolling
     this.setState({body : document.body}, ()=> {
@@ -46,50 +68,24 @@ class App extends React.Component {
       // waiting for elements to render to DOM
       setTimeout(()=>{
         // saving elements to state
-        this.setState({
-          search : {
-            search: document.getElementById('search-banner'),
-            departmentMenu : document.querySelector("#search-banner > header > div > div > div > div.col-3"),
-            searchBar: document.querySelector("#search-banner > header > div > div > div > div.col-9 > div"),
-            dropDown: document.querySelector("#search-banner > header > div > div > div > div.col-9 > div > form > div > div.container.dropdown-menu")
-          },
-          proxy : document.getElementById('proxyContainer'),
-          overview : document.getElementById('overviewContainer'),
-          description : document.getElementById('descriptionContainer'),
-          carousel : document.getElementById('carouselContainer'),
-          footer : document.getElementById('bottomOfPage'),
-          isFirstChoice: true
-        }, () => {
+        this.setInitialState(() => {
           // setting the launch page
-          const { departmentMenu, searchBar, dropDown } = this.state.search;
-          departmentMenu.classList.add('launchDepartments')
-          searchBar.classList.add('launchSearchBar')
-          dropDown.classList.add('launchDropDown')
+          this.toggleSearchBarAdjustments();
 
           //if refreshed, navigate back to product
-          if (window.performance) {
-            console.info("window.performance works fine on this browser");
-            if (performance.navigation.type == 1) {
-              let item = Number(localStorage.getItem('lowesMockProject_selectedProduct'));
-              window.dispatchEvent(new CustomEvent('product',{detail: {product_id: item}}))
-            } else {
-              console.info("No Refresh");
-              if(window.location.pathname.length > 1) {
-                let path = Number(window.location.pathname.split('/')[1]);
-                if(path > 0 && path <= 100) {
-                  window.dispatchEvent(new CustomEvent('product',{detail: {product_id: path}}))
-                }   
-              }
-            }
-          }
+          this.handlePageRefresh();
         })
-      },100)
+      },500)
   }
+
+  //Listen for Item Selections
     window.addEventListener('product', () => {
+      //if item selected from the launch page
       if(this.state.isFirstChoice) {
         this.fadeLaunchPage();
         this.toggleScrollLock();
       } else {
+        //if item selected from a product details page
         requestAnimationFrame(() => {
           this.toggleProductPage();
           this.fadeProductPage();
@@ -99,12 +95,12 @@ class App extends React.Component {
           setTimeout(()=>{
           this.toggleProductPage();
           this.toggleProxy();
-          this.resetSearchBannerItems();
+          this.toggleSearchBarAdjustments();
           setTimeout(() => {
             this.fadeProductPage();
             this.setState({isFirstChoice : false});
           }, 50);
-        },500)
+        },550)
         } else {
           setTimeout(() => {
             this.toggleProductPage();
@@ -115,6 +111,51 @@ class App extends React.Component {
         }      
     })
   }
+
+
+  setInitialState(cb) {
+    this.setState({
+      search : {
+        search: document.getElementById('search-banner'),
+        departmentMenu : document.querySelector("#search-banner > header > div > div > div > div.col-3"),
+        searchBar: document.querySelector("#search-banner > header > div > div > div > div.col-9 > div"),
+        dropDown: document.querySelector("#search-banner > header > div > div > div > div.col-9 > div > form > div > div.container.dropdown-menu")
+      },
+      proxy : document.getElementById('proxyContainer'),
+      overview : document.getElementById('overviewContainer'),
+      description : document.getElementById('descriptionContainer'),
+      carousel : document.getElementById('carouselContainer'),
+      footer : document.getElementById('bottomOfPage'),
+      isFirstChoice: true
+    }, cb)
+  }
+
+  // setupLaunchPage() {
+  //   const { departmentMenu, searchBar, dropDown } = this.state.search;
+  //   departmentMenu.classList.add('launchDepartments')
+  //   searchBar.classList.add('launchSearchBar')
+  //   dropDown.classList.add('launchDropDown')
+  // }
+
+
+  handlePageRefresh() {
+    if (window.performance) {
+      console.info("window.performance works fine on this browser");
+      if (performance.navigation.type == 1) {
+        let item = Number(localStorage.getItem('lowesMockProject_selectedProduct'));
+        window.dispatchEvent(new CustomEvent('product',{detail: {product_id: item}}))
+      } else {
+        console.info("No Refresh");
+        if(window.location.pathname.length > 1) {
+          let path = Number(window.location.pathname.split('/')[1]);
+          if(path > 0 && path <= 100) {
+            window.dispatchEvent(new CustomEvent('product',{detail: {product_id: path}}))
+          }   
+        }
+      }
+    }
+  }
+
 
   fadeLaunchPage() {
     this.state.proxy.classList.toggle('hideIT');
@@ -149,11 +190,20 @@ class App extends React.Component {
     carousel.classList.toggle('removeIT');
   }
 
-  resetSearchBannerItems() {
+  toggleSearchBarAdjustments() {
     const { departmentMenu, searchBar, dropDown } = this.state.search;
-    searchBar.classList.remove('launchSearchBar')
-    dropDown.classList.remove('launchDropDown')
-    departmentMenu.classList.remove('launchDepartments');
+    searchBar.classList.toggle('launchSearchBar')
+    dropDown.classList.toggle('launchDropDown')
+    departmentMenu.classList.toggle('launchDepartments');
+  }
+
+  debugEventListeners() {
+    window.addEventListener('product', (e)=> {console.log('product: ', e.detail)})
+    window.addEventListener('favorite', (e)=> {console.log('favorite: ', e.detail)})
+    window.addEventListener('loggedIn', (e)=> {console.log('loggedIn: ', e.detail)})
+    window.addEventListener('loggedOut', (e)=> {console.log('loggedOut: ', e.detail)})
+    window.addEventListener('stars', (e)=> {console.log('stars: ', e.detail)})
+    window.addEventListener('cart', (e)=> {console.log('cart: ', e.detail)})
   }
 
   render() {
