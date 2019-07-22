@@ -18,11 +18,25 @@ class App extends React.Component {
       footer : null,
       isFirstChoice: null,
       body : null,
-      isFirstChoice : true
+      isFirstChoice : true,
+      myHeart: ''
     }
   }
 
   componentDidMount() {
+    // easter egg!!!
+    window.onkeypress = e => {
+      this.setState(state => { 
+        return {myHeart : state.myHeart.slice(-4) + e.key}
+      }, ()=> {
+        if(this.state.myHeart === 'titmh') {
+          const clickItToMyHeart = document.getElementById('TaylorDayne');
+          clickItToMyHeart.click();
+          console.log('Taylor Dayne!!');
+        }
+      })
+    }
+
     //debugging Event Listeners
     this.debugEventListeners();
 
@@ -97,9 +111,9 @@ class App extends React.Component {
   }
 
   //Listen for Item Selections
-    window.addEventListener('product', () => {
+    window.addEventListener("product", () => {
       //if item selected from the launch page
-      if(this.state.isFirstChoice) {
+      if (this.state.isFirstChoice) {
         this.fadeLaunchPage();
         this.toggleScrollLock();
       } else {
@@ -107,27 +121,43 @@ class App extends React.Component {
         requestAnimationFrame(() => {
           this.toggleProductPage();
           this.fadeProductPage();
-        })
+        });
       }
-        if(this.state.isFirstChoice) {
-          setTimeout(()=>{
+      if (this.state.isFirstChoice) {
+        setTimeout(() => {
           this.toggleProductPage();
           this.toggleProxy();
           this.toggleSearchBarAdjustments();
           setTimeout(() => {
             this.fadeProductPage();
-            this.setState({isFirstChoice : false});
+            this.setState({ isFirstChoice: false });
           }, 50);
-        },550)
-        } else {
+        }, 550);
+      } else {
+        setTimeout(() => {
+          this.toggleProductPage();
           setTimeout(() => {
-            this.toggleProductPage();
-            setTimeout(() => {
-              this.fadeProductPage();
-            }, 50);
-          }, 100);
-        }      
-    })
+            this.fadeProductPage();
+          }, 50);
+        }, 100);
+      }
+      //easter egg part 2
+      document.getElementById("TaylorDayne").addEventListener(
+        "click",
+        function(e) {
+          var videoId = e.target.getAttribute("data-video");
+          var iframe = document.createElement("div");
+          iframe.innerHTML =
+            '<p>x</p><iframe width="560" height="315" src="https://www.youtube.com/embed/' +
+            videoId +
+            '?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+          var video = iframe.childNodes[1];
+          e.target.parentNode.replaceChild(video, e.target);
+          video.requestFullscreen();
+        },
+        false
+      );
+    });
   }
 
 

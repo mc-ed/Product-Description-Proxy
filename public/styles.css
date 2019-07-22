@@ -10,7 +10,7 @@ html,body {
 
 #searchContainer {
     position: initial;
-    height: 19vh;
+    height: 164px;
 }
 
 #overviewContainer {
@@ -51,7 +51,6 @@ html,body {
 }
 
 #hero {
-    margin: -12px;
     transition: opacity 500ms linear;
 }
 
@@ -94,23 +93,20 @@ html,body {
 .launchSearchBar{
     position: absolute;
     top: 25vh;
-    z-index: 10;
+    z-index: 1;
     width: 500px !important;
     left: -25vw;
     height: 48px;
 }
 
 .launchDropDown {
-    top: -10px !important;
-    width: 800px !important;
+  top: -1px !important;
+  width: 800px !important;
+  left: -3px !important;
 }
 
 .launchSearchBar > form > div.row {
     border: #eee 2px solid;
-}
-
-.launchDepartments {
-    left: 850px !important;
 }
 
 body.noScroll {
