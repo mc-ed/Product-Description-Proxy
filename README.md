@@ -39,15 +39,16 @@ We presented a streamlined UX highlighting product search, expanding upon the ex
 
 ### Tech Stack
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1920px-React-icon.svg.png" width="100" alt="React" />
-<img src="https://banner2.kisspng.com/20180512/stw/kisspng-bootstrap-responsive-web-design-web-development-lo-5af676c04b0535.2749534815261016963073.jpg" width="100" alt="Bootstrap" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png" width="100" alt="Node.js" />
-<img src="https://blog.cyberpanel.net/wp-content/uploads/2019/03/express-js-cyberpanel.jpeg" width="100" alt="Express" />
-<img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="100" alt="MongoDB" />
-<img src="https://icon2.kisspng.com/20180804/aaz/kisspng-postgresql-object-relational-database-oracle-datab-portfolio-whitebolt-whitebolt-5b65f8213f29d6.5042016815334093132587.jpg" width="100" alt=PostgreSQL" />
-<img src="https://www.linuxsysadmins.com/wp-content/uploads/2019/06/Amazon-EC2-Instance.png" width="100" alt="AWS EC2 />
-<img src="https://foghornconsulting.com/wp-content/uploads/2016/08/elastic_beanstalk.png" width="100" alt="AWS Elastic Beanstalk" />
-<img src="https://banner2.kisspng.com/20180629/rzb/kisspng-docker-logo-kubernetes-software-deployment-engineer-logo-5b3616d6ecbd37.9856374815302714469697.jpg" width="100" alt="docker" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1920px-React-icon.svg.png" width="120" alt="React" />
+<img src="https://fuzati.com/wp-content/uploads/2016/12/Bootstrap-Logo.png" width="120" alt="Bootstrap" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png" width="120" alt="Node.js" />
+<img src="https://moriohcdn.b-cdn.net/8c8203b86e.png" width="120" alt="Express" />
+<img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="120" alt="MongoDB" />
+<img src="https://s24255.pcdn.co/wp-content/uploads/2017/07/postgresql-logo.png" width="120" alt=PostgreSQL" />
+<img src="https://www.multichannel.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_500/MTU0MDYzODE5MTk5MDMwMzU0/aws-logojpg.webp" width="120" alt="AWS" />                                                                                         
+<img src="https://www.linuxsysadmins.com/wp-content/uploads/2019/06/Amazon-EC2-Instance.png" width="120" alt="AWS EC2" />
+<img src="https://foghornconsulting.com/wp-content/uploads/2016/08/elastic_beanstalk.png" width="120" alt="AWS Elastic Beanstalk" />
+<img src="https://cdn.worldvectorlogo.com/logos/docker.svg" width="120" alt="docker" />
 
 ### Challenges Faced
 
