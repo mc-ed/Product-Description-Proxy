@@ -4,20 +4,20 @@ This imitation of the Lowe’s website is meant to create a comfortable product 
 
 Upon item selection from the search bar, users can expect to see photos of an item as well as price, reviews by other customers, specs, and a description. They can also browse related items from their initial search, select another item and start the process over. Once the user finds a product that they have interest in, they can save the item to their favorite list or put it in their shopping cart. The application leverages cookies to maintain the persistence of the Favorites List, Shopping Cart, and Previously Viewed Items Carousel upon logging in.
 
-## Contributors
+### Contributors
   - [Evelyn Binkard](https://github.com/evelynbinkard)
   - [Mitchell Dill](https://github.com/MitchellDill)
   - [Chris Fauries](https://github.com/chrisfauries)
   - [DJ Park](https://github.com/dongjae93)
 
-## Related Projects
+### Related Projects
 
   - [Product Description microservice](https://github.com/mc-ed/Product-Description)
   - [Product Overview microservice](https://github.com/mc-ed/Product-Overview)
   - [Search & Nav Bar microservice](https://github.com/mc-ed/Search-Banner)
   - [Carousel microservice](https://github.com/mc-ed/Carousel)
 
-## Client Deliverables
+### Client Deliverables
 
 We presented a streamlined UX highlighting product search, expanding upon the extant Lowe’s online experience. We based our design decisions on the following user stories:
 
@@ -37,31 +37,30 @@ We presented a streamlined UX highlighting product search, expanding upon the ex
   - I want to know what customers with similar tastes as me are viewing
   - I don’t expect to see my carousel cluttered with repeats of the same items, regardless of how many times I’ve viewed those items
 
-## Tech Stack
+### Tech Stack
 
-(replace with logo images)
-![React JS](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1920px-React-icon.svg.png)
-![Bootstrap](https://banner2.kisspng.com/20180512/stw/kisspng-bootstrap-responsive-web-design-web-development-lo-5af676c04b0535.2749534815261016963073.jpg)
-![Node.js](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png)
-![Express](https://blog.cyberpanel.net/wp-content/uploads/2019/03/express-js-cyberpanel.jpeg)
-![MongoDB](https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png)
-![PostgreSQL](https://icon2.kisspng.com/20180804/aaz/kisspng-postgresql-object-relational-database-oracle-datab-portfolio-whitebolt-whitebolt-5b65f8213f29d6.5042016815334093132587.jpg)
-![AWS EC2](https://www.linuxsysadmins.com/wp-content/uploads/2019/06/Amazon-EC2-Instance.png)
-![AWS ElasticBeanstalk](https://foghornconsulting.com/wp-content/uploads/2016/08/elastic_beanstalk.png)
-![Docker](https://banner2.kisspng.com/20180629/rzb/kisspng-docker-logo-kubernetes-software-deployment-engineer-logo-5b3616d6ecbd37.9856374815302714469697.jpg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1920px-React-icon.svg.png" width="100" alt="React" />
+<img src="https://banner2.kisspng.com/20180512/stw/kisspng-bootstrap-responsive-web-design-web-development-lo-5af676c04b0535.2749534815261016963073.jpg" width="100" alt="Bootstrap" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png" width="100" alt="Node.js" />
+<img src="https://blog.cyberpanel.net/wp-content/uploads/2019/03/express-js-cyberpanel.jpeg" width="100" alt="Express" />
+<img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="100" alt="MongoDB" />
+<img src="https://icon2.kisspng.com/20180804/aaz/kisspng-postgresql-object-relational-database-oracle-datab-portfolio-whitebolt-whitebolt-5b65f8213f29d6.5042016815334093132587.jpg" width="100" alt=PostgreSQL" />
+<img src="https://www.linuxsysadmins.com/wp-content/uploads/2019/06/Amazon-EC2-Instance.png" width="100" alt="AWS EC2 />
+<img src="https://foghornconsulting.com/wp-content/uploads/2016/08/elastic_beanstalk.png" width="100" alt="AWS Elastic Beanstalk" />
+<img src="https://banner2.kisspng.com/20180629/rzb/kisspng-docker-logo-kubernetes-software-deployment-engineer-logo-5b3616d6ecbd37.9856374815302714469697.jpg" width="100" alt="docker" />
 
-## Challenges Faced
+### Challenges Faced
 
-### Deployment:
+#### Deployment:
 I expected deploying production to be a challenge because it was new to us. I deployed my local server using pm2 and it was difficult to trouble-shoot and navigate through this novel process. I used a fairly detailed step-by-step process found on Hackernoon, but it also assumed some knowledge that I didn’t have yet. I deployed my proxy server using Docker and Elastic Beanstalk and found it to be more accessible. I learned a lot about Security Shells, keys, VM instances, Docker images.
 
-### Styling:
+#### Styling:
 As a sort of anti-challange, or sighted-and-pre-empted challenge: our team’s early decision to style all of our microservices uniformly using Bootstrap was one which paid dividends. We avoided the style conflicts which can often plague service-oriented-architecture design, and had relatively few issues bringing our microservices together in the reverse proxy using styled components.
 
-### Authentication:
+#### Authentication:
 I did not expect implementing an authentication feature and having a persistent favorite/cart item list would be a challenge. I had prior experience with setting a cookie on request header and thought authentication was simply adding a username and password to the database. When I started to implement the login feature, I quickly realized that I needed to come up with a way to set the cookie only once whenever a user visits the page. Originally, I had a cookie set on the request header for every single get request that came to the server. Because of the nature of asynchronous API calls, when our app mounts it sends a couple of different API calls to the server. These requests happened before the initial request to the server came back with a cookie on its response. As a result, all requests which weren't the initial request did not have a cookie set on their request header, and the server set different cookies on each request. I had to change both the front and back ends to set the cookie on the request header once the app component was mounted, then send its first API call to the server to get cart items. Because of the challenge I faced in the process, I am now confident I'd be able to implement authentication on any full-stack application.
 
-## App Usage
+### App Usage
 
 *Break the following up and pair with gifs*
 
@@ -69,7 +68,7 @@ When a user visits the website, they are taken to a splash page that asks them t
 
 The item detail microservice retrieves ratings and recommendations through an API to the ratings microservice. The user can also click on the Community Q and A icon to automatically scroll to and open the Q and A section that relates to the item. This feature makes use of React-scroll and another custom event listener to simulate a click on that section. When the user clicks on a thumbnail image, a React Modal element renders and allows the user to hover over the image to zoom in. The user can increase (or decrease if the current quantity is greater than 1) the quantity of products to order
 
-## Research Required:
+### Research Required:
 
   - Deployment
   - SOA - communication between components without compromising their independence
@@ -77,7 +76,7 @@ The item detail microservice retrieves ratings and recommendations through an AP
   - Bootstrap, react-slick carousel
   - How to set up proxy servers
 
-## Future Refactoring:
+### Future Refactoring:
 
   - Scale database size to acommodate for greater inventory
   - Category-specific carousel--similar to Lowes.com's unique, conditional 4th carousel
