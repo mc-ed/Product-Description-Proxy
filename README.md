@@ -40,15 +40,15 @@ We presented a streamlined UX highlighting product search, expanding upon the ex
 ## Tech Stack
 
 (replace with logo images)
-[React JS](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1920px-React-icon.svg.png)
-[Bootstrap](https://banner2.kisspng.com/20180512/stw/kisspng-bootstrap-responsive-web-design-web-development-lo-5af676c04b0535.2749534815261016963073.jpg)
-[Node.js](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png)
-[Express](https://blog.cyberpanel.net/wp-content/uploads/2019/03/express-js-cyberpanel.jpeg)
-[MongoDB](https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png)
-[PostgreSQL](https://icon2.kisspng.com/20180804/aaz/kisspng-postgresql-object-relational-database-oracle-datab-portfolio-whitebolt-whitebolt-5b65f8213f29d6.5042016815334093132587.jpg)
-[AWS EC2](https://www.linuxsysadmins.com/wp-content/uploads/2019/06/Amazon-EC2-Instance.png)
-[AWS ElasticBeanstalk](https://foghornconsulting.com/wp-content/uploads/2016/08/elastic_beanstalk.png)
-[Docker](https://banner2.kisspng.com/20180629/rzb/kisspng-docker-logo-kubernetes-software-deployment-engineer-logo-5b3616d6ecbd37.9856374815302714469697.jpg)
+![React JS](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1920px-React-icon.svg.png)
+![Bootstrap](https://banner2.kisspng.com/20180512/stw/kisspng-bootstrap-responsive-web-design-web-development-lo-5af676c04b0535.2749534815261016963073.jpg)
+![Node.js](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1920px-Node.js_logo.svg.png)
+![Express](https://blog.cyberpanel.net/wp-content/uploads/2019/03/express-js-cyberpanel.jpeg)
+![MongoDB](https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png)
+![PostgreSQL](https://icon2.kisspng.com/20180804/aaz/kisspng-postgresql-object-relational-database-oracle-datab-portfolio-whitebolt-whitebolt-5b65f8213f29d6.5042016815334093132587.jpg)
+![AWS EC2](https://www.linuxsysadmins.com/wp-content/uploads/2019/06/Amazon-EC2-Instance.png)
+![AWS ElasticBeanstalk](https://foghornconsulting.com/wp-content/uploads/2016/08/elastic_beanstalk.png)
+![Docker](https://banner2.kisspng.com/20180629/rzb/kisspng-docker-logo-kubernetes-software-deployment-engineer-logo-5b3616d6ecbd37.9856374815302714469697.jpg)
 
 ## Challenges Faced
 
