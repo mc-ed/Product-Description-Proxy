@@ -1,5 +1,7 @@
 # Lowe's Mock
 
+[Intro](./imgs/Intro.gif)
+
 This imitation of the Lowe’s website is meant to create a comfortable product browsing experience for customers that would like to research products before going to a brick and mortar location.
 
 Upon item selection from the search bar, users can expect to see photos of an item as well as price, reviews by other customers, specs, and a description. They can also browse related items from their initial search, select another item and start the process over. Once the user finds a product that they have interest in, they can save the item to their favorite list or put it in their shopping cart. The application leverages cookies to maintain the persistence of the Favorites List, Shopping Cart, and Previously Viewed Items Carousel upon logging in.
@@ -63,11 +65,41 @@ I did not expect implementing an authentication feature and having a persistent 
 
 ### App Usage
 
-*Break the following up and pair with gifs*
+[Splash](./imgs/splash.jpg)
 
-When a user visits the website, they are taken to a splash page that asks them to being their search by entering a search term or selecting a category from the list. Behind the scenes this is a very similar program to the search bar that they see after they enter the main part of the application. Their search will take them to a page that displays the item they searched for. We made use of custom window event listeners that communicate the item display to each microservice. Each microservice then uses individual databases and queries to fetch the relevant data. The item detail and customer review section made use of individual MongoDB databases and the search bar and item carousels each used PostgreSQL databases. 
+When a user visits the website, they are taken to a splash page that asks them to being their search by entering a search term or selecting a category from the list. Behind the scenes this is a very similar program to the search bar that they see after they enter the main part of the application. 
 
-The item detail microservice retrieves ratings and recommendations through an API to the ratings microservice. The user can also click on the Community Q and A icon to automatically scroll to and open the Q and A section that relates to the item. This feature makes use of React-scroll and another custom event listener to simulate a click on that section. When the user clicks on a thumbnail image, a React Modal element renders and allows the user to hover over the image to zoom in. The user can increase (or decrease if the current quantity is greater than 1) the quantity of products to order
+[Search](./imgs/search.gif)
+
+Their search will take them to a page that displays the item they searched for. We made use of custom window event listeners that communicate the item display to each microservice. Each microservice then uses individual databases and queries to fetch the relevant data. 
+
+[Navigating](./imgs/navigating.gif)
+
+The item detail and customer review section made use of individual MongoDB databases and the search bar and item carousels each used PostgreSQL databases. The item detail microservice retrieves ratings and recommendations through an API to the ratings microservice. 
+
+[Questions](./imgs/Questions.gif)
+
+The user can also click on the Community Q and A icon to automatically scroll to and open the Q and A section that relates to the item. This feature makes use of React-scroll and another custom event listener to simulate a click on that section. 
+
+[Images](./imgs/images.gif)
+
+When the user clicks on a thumbnail image, a React Modal element renders and allows the user to hover over the image to zoom in. 
+
+[Cart](./imgs/cart.gif)
+
+The user can increase (or decrease if the current quantity is greater than 1) the quantity of products to order. This demonstrates communication between our loosely-coupled components.
+
+[Favorite](./imgs/favorites.gif)
+
+Another example of interactivity between micro-services, the user can favorite an item and if they are signed in, the item will store across sessions for them to see.
+
+[Description](./imgs/description.gif)
+
+The user can find out more about the product by browsing the accordion style modal under the details. Official specifications about the product is static but the user can interact with community feedback through the 'Reviews' and 'Q&A' sections.
+
+[Carousel](./imgs/Carousel.gif)
+
+The guide the user to other relevant items, various carousels show an assortment of products that the user might have an interest in visiting.
 
 ### Research Required:
 
