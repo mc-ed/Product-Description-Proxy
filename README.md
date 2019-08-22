@@ -77,7 +77,7 @@ Their search will take them to a page that displays the item they searched for. 
 
 The item detail and customer review section made use of individual MongoDB databases and the search bar and item carousels each used PostgreSQL databases. The item detail microservice retrieves ratings and recommendations through an API to the ratings microservice. 
 
-<img src="./imgs/questions.gif" height="340" width="600">
+<img src="./imgs/Questions.gif" height="340" width="600">
 
 The user can also click on the Community Q and A icon to automatically scroll to and open the Q and A section that relates to the item. This feature makes use of React-scroll and another custom event listener to simulate a click on that section. 
 
